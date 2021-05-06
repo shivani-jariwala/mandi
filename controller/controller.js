@@ -1,6 +1,5 @@
 
-const { MongoClient } = require('mongodb');
-var ObjectId = require('mongodb').ObjectId;
+const { MongoClient,ObjectId } = require('mongodb');
 require('dotenv').config()
 
 
@@ -76,7 +75,6 @@ const getReportHandler = async (req, res) => {
     await client.connect();
     try {
         const result = await client.db("mandi").collection("market").findOne({ _id: ObjectId(reportID) });
-        console.log(result);
         res.send(result);
     } catch (error) {
         console.log(error);
